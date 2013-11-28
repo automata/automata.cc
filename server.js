@@ -3,7 +3,8 @@ var connect = require('connect')
     , express = require('express')
     , io = require('socket.io')
     , fs = require('fs')
-    , port = (process.env.PORT || 8081);
+    , port = (process.env.PORT || 8081)
+    , marked = require('marked');
 
 // global vars
 var pads_dir = __dirname + '/pads/';
@@ -78,8 +79,6 @@ var updatePadFile = function (data) {
 //              Routes                   //
 ///////////////////////////////////////////
 
-/////// ADD ALL YOUR ROUTES HERE  /////////
-
 server.get('/', function(req,res){
   res.render('index.jade', {
     locals : { 
@@ -93,33 +92,35 @@ server.get('/', function(req,res){
 
 server.get('/:pad_title', function(req, res) {
   // get the page content already saved
-  fs.readFile(pads_dir + req.params.pad_title + '.md', function (error, data) {
-    if (error) {
-      // FIXME:
-    }
-    res.render('show_pad.jade', {
-      locals : { 
-        title : 'Your Page Title'
-        ,description: 'Your Page Description'
-        ,author: 'Your Name'
-        ,analyticssiteid: 'XXXXXXX' 
-      },
-      
-      pad_title: req.params.pad_title,
-      pad_content: data
-    });
-  });
+  fs.readFile(pads_dir + req.params.pad_title + '.md', 'utf-8',
+              function (error, data) {
+                if (error) {
+                  // FIXME:
+                }
+                var content = String(data);
+                res.render('show_pad.jade', {
+                  locals : { 
+                    title : req.params.pad_title
+                    ,description: 'Your Page Description'
+                    ,author: 'Your Name'
+                    ,analyticssiteid: 'XXXXXXX' 
+                  },
+                  pad_title: req.params.pad_title,
+                  pad_content: marked(content)
+                });
+              });
 });
 
 server.get('/:pad_title/edit', function(req, res) {
   // get the page content already saved
-  fs.readFile(pads_dir + req.params.pad_title + '.md', function (error, data) {
+  fs.readFile(pads_dir + req.params.pad_title + '.md', 
+              function (error, data) {
     if (error) {
       // FIXME:
     }
     res.render('edit_pad.jade', {
       locals : { 
-        title : 'Your Page Title'
+        title : req.params.pad_title
         ,description: 'Your Page Description'
         ,author: 'Your Name'
         ,analyticssiteid: 'XXXXXXX' 

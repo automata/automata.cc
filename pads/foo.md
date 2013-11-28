@@ -1,16 +1,17 @@
-Teste ABACATEaaa
-=====adsasadasdf
+Teste de título
+===
 
-Parágrafo.
+Outro título, menor
+-----------
 
-- Lista
-- Lista 2
+Agora uma lista:
 
-<b>HTML</b>
+- um
+- dois
+- três
 
-asdf
-asd
-fa
-dsfa
-sdfs
-asdasdf
+E um link http://automata.cc
+
+<img src="http://automata.cc/me.gif" />
+
+asdfasdf
