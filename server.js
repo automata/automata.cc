@@ -80,53 +80,63 @@ var updatePadFile = function (data) {
 ///////////////////////////////////////////
 
 server.get('/', function(req,res){
-  res.render('index.jade', {
-    locals : { 
-      title : 'Your Page Title'
-      ,description: 'Your Page Description'
-      ,author: 'Your Name'
-      ,analyticssiteid: 'XXXXXXX' 
+  fs.readdir(pads_dir, function (error, files) {
+    if (error) {
+      // FIXME:
     }
+    var pads_list = files.map(function (value) {
+      return value.split('.')[0];
+    });
+
+    res.render('index.jade', {
+      locals : { 
+        title : 'automata',
+        description: 'Your Page Description',
+        author: 'Your Name',
+        analyticssiteid: 'XXXXXXX' 
+      },
+      pads_names: pads_list
+    });
   });
 });
 
 server.get('/:pad_title', function(req, res) {
   // get the page content already saved
-  fs.readFile(pads_dir + req.params.pad_title + '.md', 'utf-8',
-              function (error, data) {
-                if (error) {
-                  // FIXME:
-                }
-                var content = String(data);
-                res.render('show_pad.jade', {
-                  locals : { 
-                    title : req.params.pad_title
-                    ,description: 'Your Page Description'
-                    ,author: 'Your Name'
-                    ,analyticssiteid: 'XXXXXXX' 
-                  },
-                  pad_title: req.params.pad_title,
-                  pad_content: marked(content)
-                });
-              });
+  var pad_title = req.params.pad_title;
+  fs.readFile(pads_dir + pad_title + '.md', 'utf-8', function (error, data) {
+    if (error) {
+      // FIXME:
+    }
+    var content = String(data);
+    res.render('show_pad.jade', {
+      locals : { 
+        title : pad_title,
+        description: 'Your Page Description',
+        author: 'Your Name',
+        analyticssiteid: 'XXXXXXX' 
+      },
+      pad_title: pad_title,
+      pad_content: marked(content)
+    });
+  });
 });
 
 server.get('/:pad_title/edit', function(req, res) {
   // get the page content already saved
-  fs.readFile(pads_dir + req.params.pad_title + '.md', 
-              function (error, data) {
+  var pad_title = req.params.pad_title;
+  fs.readFile(pads_dir + pad_title + '.md', 'utf-8', function (error, data) {
     if (error) {
       // FIXME:
     }
     res.render('edit_pad.jade', {
       locals : { 
-        title : req.params.pad_title
-        ,description: 'Your Page Description'
-        ,author: 'Your Name'
-        ,analyticssiteid: 'XXXXXXX' 
+        title : pad_title,
+        description: 'Your Page Description',
+        author: 'Your Name',
+        analyticssiteid: 'XXXXXXX' 
       },
       
-      pad_title: req.params.pad_title,
+      pad_title: pad_title,
       pad_content: data
     });
   });

@@ -1,6 +1,10 @@
 extends layout
 
 block content
-	div
-		a(id='sender')='Send a Message'
-		ul(id='receiver')
+  #content
+    #bio
+      b automata.cc
+    ul
+      each val in pads_names
+        li
+          a(href='/#{val}') #{val}
