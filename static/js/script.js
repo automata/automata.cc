@@ -11,9 +11,11 @@ $(document).ready(function() {
     socket.emit('change', {pad_title: pad_title,
                            pad_content: $(this).val(), 
                            pad_author: me});
+    console.log('sent change event', pad_title, me);
   });
 
   socket.on('changed', function(data){
+    console.log('received changed event', data);
     if (data.pad_author !== me && data.pad_title === pad_title) {
       var cursorPos = $("#pad_content").getCursorPosition();
       $("#pad_content").val(data.pad_content);
