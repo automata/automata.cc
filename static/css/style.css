@@ -145,14 +145,12 @@ box {
     opacity: 1.0;
 }
 
+/* content */
 
 #content {
-    width: 800px;
+    width: 600px;
     height: auto;
-    margin: 10px;
-    padding: 10px;
     background: #fff;
-    position: relative;
     float: left;
 }
 
@@ -181,6 +179,33 @@ font-weight:normal;
     color: #666;
     font-size: 12pt;
     margin-top: 50px;
+}
+
+/* feeds */
+
+#feeds {
+    float: right;
+    padding-right: 300px;
+    top: 0;
+}
+
+#feeds .delicious, #feeds .tumblr, #feeds .github {
+    padding-left: 40px;
+    width: 200px;
+    padding-bottom: 15px;
+    display: block;
+}
+
+#feeds .delicious {
+    background: url("/images/delicious.png") no-repeat;
+}
+
+#feeds .tumblr {
+    background: url("/images/tumblr.png") no-repeat;
+}
+
+#feeds .github {
+    background: url("/images/github.png") no-repeat;
 }
 
 pre,code {
