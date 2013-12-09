@@ -3,10 +3,16 @@ extends layout
 block content
   #content
     #bio
-      b automata.cc
-    ul
-      each val in pads_names
-        li
-          a(href='/#{val}') #{val}
+      b automata.cc 
+    #boxes
+      each pad in pads
+        div(class='box')
+          a(href='/#{pad.name}') 
+            div(class='thumb')
+              img(src='#{pad.thumb}')
+            div(class='title')
+              #{pad.name} 
+            //p
+            //  #{pad.abstract}
   #feeds
       

@@ -84,19 +84,62 @@ server.get('/', function(req,res){
     if (error) {
       // FIXME:
     }
-    var pads_list = files.map(function (value) {
+    var pads_names = files.map(function (value) {
       return value.split('.')[0];
     });
 
-    res.render('index.jade', {
-      locals : { 
-        title : 'automata',
-        description: 'Your Page Description',
-        author: 'Your Name',
-        analyticssiteid: 'XXXXXXX' 
-      },
-      pads_names: pads_list
-    });
+    // open each md file and search for abstract and thumb
+    var pads_data = [],
+        cont = 0;
+    for (var i in pads_names) {
+      var pad_name = pads_names[i];
+
+      fs.readFile(pads_dir + pad_name + '.md', 'utf-8', function (error, data) {
+        var tokens = marked.lexer(String(data)),
+            pad_abstract = "",
+            pad_thumb = "";
+        // the first paragraph is the abstract
+        for (var j in tokens) {
+          if (tokens[j].type == 'paragraph') {
+            pad_abstract = tokens[j].text;
+            break;
+          }
+        }
+        // the first image is the thumb
+        for (var j in tokens) {
+          if (tokens[j].text) {
+            if (tokens[j].text.search('<img src') > -1) {
+              pad_thumb = tokens[j].text.replace(/.*src=\"(.+)\".*/, "$1");
+              break;
+            }
+          }
+        }
+        pads_data.push({"abstract": pad_abstract, "thumb": pad_thumb});
+
+        if (cont == pads_names.length-1) {
+          var pads = [];
+          for (var k in pads_names) {
+            pads.push({
+              "name": pads_names[k],
+              "abstract": pads_data[k]["abstract"],
+              "thumb": pads_data[k]["thumb"]
+            });
+          }
+          res.render('index.jade', {
+            locals : { 
+              title : 'automata',
+              description: 'automata portfolio',
+              author: 'Vilson Vieira',
+              analyticssiteid: 'XXXXXXX' 
+            },
+            pads: pads
+          });
+        }
+        cont++;
+      });
+    }
+
+
   });
 });
 

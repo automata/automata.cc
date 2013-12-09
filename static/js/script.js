@@ -35,88 +35,88 @@ $(document).ready(function() {
   // feeds watcher
   // keeps getting JSON data from some feeds and showing at index page
 
-  var feedsData = [];
-  var services = [];
+//   var feedsData = [];
+//   var services = [];
   
-  var feeds = {
-    delicious: {
-      url: "http://feeds.delicious.com/v2/json/vilson?callback=?",
-      handler: function (data) {
-        var keys = ["u", "d", "dt"];
-        $.each(data, function (i, item) {
-          feedsData.push({
-            service: "delicious", 
-            date: item.dt,
-            content: item.d,
-            url: item.u
-          });
-        });
-        updateOrNot("delicious");
-      }
-    },
-    github: {
-      url: "https://api.github.com/users/automata/events?callback=?",
-      handler: function (data) {
-        $.each(data.data, function (i, item) {
-          feedsData.push({
-            service: "github",
-            date: item.created_at,
-            content: item.type + " " + item.repo.name,
-            url: ""
-          });
-        });
-        updateOrNot("github");
-      }
-    },
-    tumblr: {
-      url: "http://aut0mata.tumblr.com/api/read/json?callback=?",
-      handler: function (data) {
-        $.each(data.posts, function (i, item) {
-          feedsData.push({
-            service: "tumblr",
-            date: item["date-gmt"],
-            content: item.slug,
-            url: item["url-with-slug"]
-          });
-        });
-        updateOrNot("tumblr");
-      }
-    }
-  };
+//   var feeds = {
+//     delicious: {
+//       url: "http://feeds.delicious.com/v2/json/vilson?callback=?",
+//       handler: function (data) {
+//         var keys = ["u", "d", "dt"];
+//         $.each(data, function (i, item) {
+//           feedsData.push({
+//             service: "delicious", 
+//             date: item.dt,
+//             content: item.d,
+//             url: item.u
+//           });
+//         });
+//         updateOrNot("delicious");
+//       }
+//     },
+//     github: {
+//       url: "https://api.github.com/users/automata/events?callback=?",
+//       handler: function (data) {
+//         $.each(data.data, function (i, item) {
+//           feedsData.push({
+//             service: "github",
+//             date: item.created_at,
+//             content: item.type + " " + item.repo.name,
+//             url: ""
+//           });
+//         });
+//         updateOrNot("github");
+//       }
+//     },
+//     tumblr: {
+//       url: "http://aut0mata.tumblr.com/api/read/json?callback=?",
+//       handler: function (data) {
+//         $.each(data.posts, function (i, item) {
+//           feedsData.push({
+//             service: "tumblr",
+//             date: item["date-gmt"],
+//             content: item.slug,
+//             url: item["url-with-slug"]
+//           });
+//         });
+//         updateOrNot("tumblr");
+//       }
+//     }
+//   };
 
-  var updateOrNot = function (service) {
-    services.push(service);
+//   var updateOrNot = function (service) {
+//     services.push(service);
 
-    if (services.length === 3) {
-      feedsData.sort(function(a,b){
-        a = new Date(a.date);
-        b = new Date(b.date);
-        a = a.getTime();
-        b = b.getTime();
-        return a<b?1:a>b?-1:0;
-      });
+//     if (services.length === 3) {
+//       feedsData.sort(function(a,b){
+//         a = new Date(a.date);
+//         b = new Date(b.date);
+//         a = a.getTime();
+//         b = b.getTime();
+//         return a<b?1:a>b?-1:0;
+//       });
     
-      var s = "";
-      $.each(feedsData, function (i, item) {
-        s += "<div class='"+item.service+"'><div class='"+item.service+"_icon'></div>" + item.content + "</div>";
-      });
-      $("#feeds").html(s);
+//       var s = "";
+//       $.each(feedsData, function (i, item) {
+//         s += "<div class='"+item.service+"'><div class='"+item.service+"_icon'></div>" + item.content + "</div>";
+//       });
+//       $("#feeds").html(s);
 
-      feedsData = [];
-      services = [];
-    }
-  };
+//       feedsData = [];
+//       services = [];
+//     }
+//   };
 
-  var feedFetcher = function () {
-    $.each(feeds, function (feedName, feedData) {
-      $.getJSON(feedData.url, feedData.handler);
-    });
-  };
+//   var feedFetcher = function () {
+//     $.each(feeds, function (feedName, feedData) {
+//       $.getJSON(feedData.url, feedData.handler);
+//     });
+//   };
 
-//  var feedWatcher = window.setInterval(function () {
-//  }, 10000);
-  //clearInterval(feedWatcher);
+// //  var feedWatcher = window.setInterval(function () {
+// //  }, 10000);
+//   //clearInterval(feedWatcher);
   
-  window.setTimeout(feedFetcher, 1000);
+//   window.setTimeout(feedFetcher, 1000);
 
 });
