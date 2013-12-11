@@ -164,37 +164,41 @@ body {
 /* content */
 
 #content {
-    width: 100%;
     height: auto;
     background: #fff;
     float: left;
+    padding: 20px;
+}
+
+#content p, #content li {
+    font-weight: 100;
+    font-family: 'Exo 2', Helvetica Neue, sans-serif;
+    line-height: 1.55em;
+    font-size: 24px;
 }
 
 #content h1 {
-    font-size: 14pt;
-    width: 180px;
-    height: 150px;
-    padding: 10px;
-
-    border-radius: 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -o-border-radius: 5px;
-    background: #000;
-    color: #fff;
-font-weight:normal;
+    font-family: 'Exo 2', Helvetica Neue, sans-serif;;
+    font-size: 86px;
+    font-weight: 500;
 }
 
 #content h2 {
-    color: #000;
-    font-size: 14pt;
+    font-family: 'Exo 2', Helvetica Neue, sans-serif;;
+    font-size: 32px;
+    font-weight: bold;
     margin-top: 50px;
 }
 
 #content h3 {
-    color: #666;
-    font-size: 12pt;
+    font-family: 'Exo 2', Helvetica Neue, sans-serif;;
+    font-size: 28px;
+    font-weight: bold;
     margin-top: 50px;
+}
+
+#content img {
+    max-width: 100%;
 }
 
 /* feeds */
@@ -224,9 +228,9 @@ font-weight:normal;
     background: url("/images/github.png") no-repeat;
 }
 
-pre,code {
+pre {
     font-family: Monaco, Consolas, "Lucida Console", monospace;
-    font-size: 11pt;
+    font-size: 18px;
     line-height: 18px;
     white-space: pre-wrap;
     word-wrap: break-word;
@@ -272,7 +276,10 @@ a:hover {
 p {
     display: block;
     margin: 1em 0px;
-font-weight:normal;
+    font-weight: 100;
+    font-family: raleway;
+    line-height: 1.55em;
+    font-size: 22px;
 }
 
 #feedback_box {
