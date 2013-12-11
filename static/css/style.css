@@ -132,6 +132,7 @@ body {
 }
 
 .box .thumb img {
+    max-width: none;
     display: inline-block;
     min-width: 100%;
     min-height: 100%;
@@ -139,7 +140,12 @@ body {
 }
 
 .box .title {
-    margin: 0px;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.box a {
+    text-decoration: none;
 }
 
 /*
