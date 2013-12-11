@@ -131,7 +131,7 @@ body {
     overflow: hidden;
 }
 
-.box .thumb img {
+#content .box .thumb img {
     max-width: none;
     display: inline-block;
     min-width: 100%;
