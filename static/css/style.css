@@ -99,7 +99,10 @@ textarea {
    ========================================================================== */
 
 body {
-    font-family: raleway, sans-serif;
+  font-weight: 100;
+font-family: 'Exo 2', Helvetica Neue, sans-serif;
+line-height: 1.55em;
+font-size: 24px;
     background: #fff;
     color: #000;
     font-weight: 100;
@@ -109,15 +112,21 @@ body {
 .box {
     width: 200px;
     height: 200px;
-    margin: 10px;
-    padding: 20px;
+    margin-right: 10px;
+    padding-right: 20px;
+    padding-bottom: 50px;
+    padding-top: 50px;
     position: relative;
     float: left;
-    opacity: 0.8;
-    transition: all 0.5s ease-in-out;
-    -webkit-transition: all 0.5s ease-in-out;
-    -moz-transition: all 0.5s ease-in-out;
-    -o-transition: all 0.5s ease-in-out;
+    opacity: 1.0;
+    transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+}
+
+.box:hover {
+  opacity: 0.8;
 }
 
 .box .thumb {
@@ -125,6 +134,12 @@ body {
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     -o-border-radius: 10px;
+    /* hacked from http://lea.verou.me/css3patterns */
+    background-color:#ccc;
+    background-image: 
+    linear-gradient(rgba(255,255,255,.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.3) 1px, transparent 1px);
+    background-size:20px 20px;
 
     height: 200px;
     width: 200px;
@@ -140,8 +155,7 @@ body {
 }
 
 .box .title {
-    margin-top: 10px;
-    font-size: 16px;
+    font-size: 16pt;
 }
 
 .box a {
@@ -169,11 +183,17 @@ body {
 
 /* content */
 
+#bio {
+  max-width: 800px;
+  margin-bottom: 100px;
+}
+
 #content {
     height: auto;
     background: #fff;
     float: left;
     padding: 20px;
+    margin-bottom: 100px;
 }
 
 #content p, #content li {
@@ -244,9 +264,15 @@ pre {
     padding: 10px;
     border-radius: 5px;
     -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
+    -webkit-border-radius: 10px;
     -o-border-radius: 5px;
-    background: #222;
+
+    background-color:#222;
+    background-image: 
+    linear-gradient(rgba(55,55,55,.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(55,55,55,.3) 1px, transparent 1px);
+    background-size:20px 20px;
+
     color: #eee;
 }
 
@@ -264,9 +290,17 @@ textarea {
     padding: 10px;
     border-radius: 5px;
     -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
+    -webkit-border-radius: 10px;
     -o-border-radius: 5px;
     background: #222;
+
+background-color:#222;
+background-image: 
+linear-gradient(rgba(55,55,55,.3) 1px, transparent 1px),
+linear-gradient(90deg, rgba(55,55,55,.3) 1px, transparent 1px);
+background-size:20px 20px;
+
+    
     color: #eee;
 }
 
@@ -286,6 +320,43 @@ p {
     font-family: raleway;
     line-height: 1.55em;
     font-size: 22px;
+}
+
+blockquote p {
+  padding: 10px;
+  font-style: italic;
+
+background-color:#eee;
+background-image: 
+linear-gradient(rgba(255,255,255,.3) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,.3) 1px, transparent 1px);
+background-size:20px 20px;
+
+  width: 600px;
+  font-size: 18px;
+  margin: 0.25em 0;
+  padding: 0.35em 40px;
+  line-height: 1.45;
+  position: relative;
+  color: #383838;
+
+      border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 5px;
+
+}
+
+blockquote p:before {
+  font-family: Sans;
+display: block;
+padding-left: 10px;
+content: "\201C";
+font-size: 80px;
+position: absolute;
+left: -18px;
+top: 14px;
+color: #fff;
 }
 
 #feedback_box {
@@ -381,9 +452,6 @@ p.author, p.date {
     z-index: 20;
     opacity: 0.9;
 }
-
-
-
 
 
 

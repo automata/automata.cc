@@ -4,7 +4,8 @@ block content
   #content
     p editing pad 
       b 
-        #{pad_title}
+        a(href='/#{pad_title}')
+          #{pad_title}
       ...
     textarea(id='pad_content') #{pad_content}
                 
