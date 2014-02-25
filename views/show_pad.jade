@@ -1,20 +1,19 @@
 extends layout
 
 block content
-  div(id='content')
+  #content
+    #bio
+      #banner
+        a(href='/')
+          \automata || Vilson Vieira
+      \Keep in touch: <a href="http://twitter.com/aut0mata">Twitter</a>  <a href="http://github.com/automata">Github</a>, <a href="http://flickr.com/auto_mata">Flickr</a>, <a href="http://aut0mata.tumblr.com">Tumblr</a>, <a href="mailto:vilson@void.cc">Email</a>. Thank you for your visit.
     !{pad_content}                
-  div(id='comments')
-    script(type="text/javascript")   
+
+    #disqus_thread
+    script(type='text/javascript')
       var disqus_shortname = 'automata';
-      var disqus_developer = 0;
-      var disqus_identifier = '#{pad_title}';
-      var disqus_url = 'http://automata.cc/#{pad_title}';
       (function() {
-          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-          dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
       })();
-    noscript Please enable JavaScript to view the
-      a(href="http://disqus.com/?ref_noscript) comments powered by Disqus.
-    a.dsq-brlink(href="http://disqus.com") blog comments powered by 
-      span.logo-disqus Disqus
