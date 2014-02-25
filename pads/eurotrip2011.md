@@ -1,0 +1,2 @@
+<iframe width="1000" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com.br/maps/ms?msa=0&msid=215349426709735241931.0004a4b12256b086e8780&hl=pt-BR&ie=UTF8&t=m&ll=46.051808,3.614502&spn=14.715447,25.532226&output=embed"></iframe><br /><small>Visualizar <a href="https://www.google.com.br/maps/ms?msa=0&msid=215349426709735241931.0004a4b12256b086e8780&hl=pt-BR&ie=UTF8&t=m&ll=46.051808,3.614502&spn=14.715447,25.532226&source=embed" style="color:#0000FF;text-align:left">Mochilão pela Europa</a> em um mapa maior</small>
+
